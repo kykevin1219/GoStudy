@@ -19,7 +19,6 @@ func SetSubInterface(w http.ResponseWriter, r *http.Request) {
 	//DECODE
 	var reqbody SetSubInterfaceBody
 	err := json.NewDecoder(r.Body).Decode(&reqbody)
-	fmt.Println(reqbody.Address)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
