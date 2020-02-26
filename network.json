@@ -1,0 +1,72 @@
+{
+    "dnsServers": {
+      "interfaces": [
+        "8.8.8.8",
+        "8.8.4.4"
+      ],
+      "resolv": [
+        "168.126.63.2",
+        "168.126.63.1",
+        "8.8.4.4",
+        "8.8.8.8"
+      ],
+      "updatedAt": 1554301475
+    },
+    "networkInterfacesInfo": {
+      "emergency": {
+        "configuration": {
+          "addrSource": "static",
+          "address": "192.168.62.182",
+          "allowHotplug": false,
+          "auto": false,
+          "gateway": "",
+          "netmask": "255.255.0.0"
+        },
+        "current": {
+          "address": "",
+          "broadcast": "",
+          "isUp": false,
+          "netmask": ""
+        },
+        "description": "",
+        "name": "eth0:1"
+      },
+      "gateway": "192.168.0.1",
+      "main": {
+        "configuration": {
+          "addrSource": "dhcp",
+          "address": "192.168.0.2",
+          "allowHotplug": true,
+          "auto": true,
+          "gateway": "192.168.0.1",
+          "netmask": "255.255.0.0"
+        },
+        "current": {
+          "address": "192.168.0.2",
+          "broadcast": "192.168.0.255",
+          "isUp": true,
+          "netmask": "255.255.255.0"
+        },
+        "description": "",
+        "name": "eth0"
+      },
+      "sub": {
+        "configuration": {
+          "addrSource": "static",
+          "address": "10.10.20.10",
+          "allowHotplug": false,
+          "auto": false,
+          "gateway": "",
+          "netmask": "255.255.255.0"
+        },
+        "current": {
+          "address": "",
+          "broadcast": "",
+          "isUp": false,
+          "netmask": ""
+        },
+        "description": "",
+        "name": "eth0:2"
+      }
+    }
+  }
