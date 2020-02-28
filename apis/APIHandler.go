@@ -3,11 +3,10 @@ package apis
 import (
 	"fmt"
 	"net/http"
-	"time"
 
 	"github.com/gorilla/pat"
 	"github.com/kykevin1219/assignment/apis/netapis"
-	accesslog "github.com/mash/go-accesslog"
+	accesslog "github.com/kykevin1219/assignment/logger"
 )
 
 type logger struct {
@@ -17,15 +16,14 @@ type logger struct {
 func (l logger) Log(record accesslog.LogRecord) {
 	fmt.Printf(
 		"%s Host:%s Uri:%s Method:%s Status:%d Proto:%s From:%s, Size:%d \n",
-		time.Now().Format("2006-01-02T15:04:05-07:00"),
+		record.Time.Format("2006-01-02T15:04:05-07:00"),
 		record.Host,
-		record.Uri,
+		record.URI,
 		record.Method,
 		record.Status,
 		record.Protocol,
-		record.Ip,
+		record.From,
 		record.Size,
-		// size , who,
 	)
 }
 
