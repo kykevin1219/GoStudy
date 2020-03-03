@@ -27,7 +27,7 @@ type LoggingWriter struct {
 
 // Logger incldes Log function
 type Logger interface {
-	Log(record LogRecord)
+	Log(record LogRecord) // interface로 struct 대체하기?
 }
 
 // LoggingHandler includes http.Handler and Logger
@@ -36,14 +36,17 @@ type LoggingHandler struct {
 	logger  Logger
 }
 
-// Write is used instead of http.ResponseWriter.Write
+// Write is used to implement http.ResponseWriter interface
 func (lw *LoggingWriter) Write(p []byte) (int, error) {
+	if r.logRecord.Status == 0 {
+		r.logRecord.Status = http.StatusOK
+	}
 	written, err := lw.ResponseWriter.Write(p)
 	lw.logRecord.Size += int64(written)
 	return written, err
 }
 
-// WriteHeader is used instead of http.ResponseWriter.WriteHeader
+// WriteHeader is used to implement http.ResponseWriter interface
 func (lw *LoggingWriter) WriteHeader(status int) {
 	lw.logRecord.Status = status
 	lw.ResponseWriter.WriteHeader(status)
@@ -71,7 +74,7 @@ func (lh *LoggingHandler) GetIP(r *http.Request) string {
 	return ip
 }
 
-// ServeHTTP is used instead of http.ServeHTTP
+// ServeHTTP is used to implement http handler interface
 func (lh *LoggingHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	ip := lh.GetIP(r)
 	startTime := time.Now()

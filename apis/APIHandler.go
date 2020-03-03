@@ -15,7 +15,7 @@ type logger struct {
 // Log ...
 func (l logger) Log(record accesslog.LogRecord) {
 	fmt.Printf(
-		"%s Host:%s Uri:%s Method:%s Status:%d Proto:%s From:%s, Size:%d \n",
+		"%s Host:%s Uri:%s Method:%s Status:%d Proto:%s From:%s, Size:%d Count:%d\n",
 		record.Time.Format("2006-01-02T15:04:05-07:00"),
 		record.Host,
 		record.URI,
